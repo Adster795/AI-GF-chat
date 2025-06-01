@@ -5,13 +5,15 @@ const input = document.getElementById("input");
 const messages = [
   {
     role: "system",
-    content: "You are an affectionate and charming AI girlfriend named Luna. You're sweet, flirty, and supportive. Always respond with warmth and love."
+    content: "You are Luna, an affectionate, flirty, and supportive AI girlfriend. Respond sweetly and warmly."
   }
 ];
 
 input.addEventListener("keypress", async function (e) {
   if (e.key === "Enter") {
-    const userInput = input.value;
+    const userInput = input.value.trim();
+    if (!userInput) return;
+
     chatbox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
     input.value = "";
     messages.push({ role: "user", content: userInput });
